@@ -1,0 +1,62 @@
+conky.config = {
+	use_xft = true,
+	font = 'Samantha:size=10',
+	alignment = 'top_right',
+	gap_x = 10,
+	gap_y = 65,
+	own_window_argb_value = 0,
+	own_window_transparent = false,
+	own_window_argb_visual = false,
+	own_window_colour = '#000000',
+	minimum_width = 190, minimum_height = 0,
+};
+
+conky.text = [[
+
+${color}Today is:${color green}$alignr${time %A,}$alignr ${time %e %B %G}
+
+${color}Architecture:${color green}$alignr $machine
+${color}Distribution:${color green}$alignr ${execi 600 grep VERSION= /etc/os-release | sed 's/^VERSION="\(.*\)"$/\1/'}
+${color}Kernel:$alignr${color green} $kernel
+
+CPU: ${cpu cpu0}% ${alignr}${cpubar cpu0 8,60}
+${voffset 4}CPU1: ${cpu cpu1}% ${alignr}${cpubar cpu1 8,60}
+${voffset 4}CPU2: ${cpu cpu2}% ${alignr}${cpubar cpu2 8,60}
+${voffset 4}CPU3: ${cpu cpu3}% ${alignr}${cpubar cpu3 8,60}
+${voffset 4}CPU4: ${cpu cpu4}% ${alignr}${cpubar cpu4 8,60}
+${voffset 6}RAM used: ${memperc}% ${alignr}Free: ${memeasyfree}
+${voffset 6}SWAP used: ${swapperc}% ${alignr}Free: ${swapfree}
+
+CPU USAGE ${hr 2}
+${voffset 2}${top name 1}${alignr} ${top pid 1} ${top cpu 1}
+${voffset 4}${top name 2}${alignr} ${top pid 2} ${top cpu 2}
+${voffset 4}${top name 3}${alignr} ${top pid 3} ${top cpu 3}
+${voffset 4}${top name 4}${alignr} ${top pid 4} ${top cpu 4}
+${voffset 4}${top name 5}${alignr} ${top pid 5} ${top cpu 5}
+
+MEM USAGE ${hr 2}
+${voffset 2}${top_mem name 1}${alignr} ${top_mem pid 1} ${top_mem mem 1}
+${voffset 4}${top_mem name 2}${alignr} ${top_mem pid 2} ${top_mem mem 2}
+${voffset 4}${top_mem name 3}${alignr} ${top_mem pid 3} ${top_mem mem 3}
+${voffset 4}${top_mem name 4}${alignr} ${top_mem pid 4} ${top_mem mem 4}
+${voffset 4}${top_mem name 5}${alignr} ${top_mem pid 5} ${top_mem mem 5}
+
+HD ${hr 2}
+${voffset 2}Root: ${stippled_hr 1}
+${voffset 4}${fs_used /}/${fs_size /} ${alignr}${fs_free /} Free ${fs_bar 8,60 /}
+${voffset 2}Home: ${stippled_hr 1}
+${voffset 4}${fs_used /home}/${fs_size /home} ${alignr}${fs_free /home} Free ${fs_bar 8,60 /home}
+
+${color2}${voffset 5}Intel® PUT_CPU_MODEL GHz: ${color1}@  ${color green}${freq} MHz
+${color}CPU 0 ${color green}${cpu cpu1}% ${color3}${cpubar cpu1 18}
+${color}CPU 1 ${color green}${cpu cpu2}% ${color3}${cpubar cpu2 18}
+${color}CPU 2 ${color green}${cpu cpu1}% ${color3}${cpubar cpu2 18}
+${color}CPU 3 ${color green}${cpu cpu2}% ${color3}${cpubar cpu3 18}
+${color}CPU 4 ${color green}${cpu cpu1}% ${color3}${cpubar cpu4 18}
+${color}CPU 5 ${color green}${cpu cpu2}% ${color3}${cpubar cpu5 18}
+${color}CPU 6 ${color green}${cpu cpu1}% ${color3}${cpubar cpu6 18}
+${color}CPU 7 ${color green}${cpu cpu2}% ${color3}${cpubar cpu7 18}
+${color}CPU 8 ${color green}${cpu cpu1}% ${color3}${cpubar cpu8 18}
+${color}CPU 9 ${color green}${cpu cpu2}% ${color3}${cpubar cpu9 18}
+
+]];
